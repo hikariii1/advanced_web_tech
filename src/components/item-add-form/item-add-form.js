@@ -5,15 +5,17 @@ export default class ItemAddForm extends Component {
         label: ''
     };
     onLabelChange = (e) => {
-        // console.log('rgrggn');
-        // console.log(e.target.value)
         this.setState({
+
             label: e.target.value
         });
     };
     onSubmit = (e) => {
         e.preventDefault();
         this.props.onItemAdded(this.state.label);
+        this.setState({
+            label: ''
+        });
     };
     render() {
         return (
@@ -23,9 +25,9 @@ export default class ItemAddForm extends Component {
                 <input type={"text"}
                     className={"form-control"}
                     onChange={this.onLabelChange}
-                    placeholder={"What need to be done"} />
-                <button
-                    className={"btn btn-outline-secondary"} >
+                    placeholder={"What need to be done"}
+                    value={this.state.label} />                <button
+                        className={"btn btn-outline-secondary"} >
                     Add Item
                 </button>
             </form>
